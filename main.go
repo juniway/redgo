@@ -3,8 +3,6 @@ package main
 import (
 	"fmt"
 	"strconv"
-	// "time"
-	// "net"
 	"net/http"
 
 	"github.com/garyburd/redigo/redis"
@@ -33,9 +31,6 @@ func main() {
 		msg = <-ch
 		return c.String(http.StatusOK, msg)
 	})
-	// e.GET("/status.html", func(c echo.Context) error {
-	//     return c.String(http.StatusOK, "ok")
-	// })
 
 	e.Run(fasthttp.New(":8393"))
 

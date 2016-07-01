@@ -3,10 +3,9 @@
 package redisman
 
 import (
-	// "fmt"
-	"log"
-	// "strings"
+	"encoding/json"
 	"github.com/garyburd/redigo/redis"
+	"log"
 	"time"
 )
 
@@ -44,6 +43,21 @@ type (
 		IdleTimeout time.Duration
 	}
 )
+
+func ReadConfig(filename string) (map[string]string, error) {
+	bytes, err := ioutil.ReadFile(filename)
+	if err != nil {
+		fmt.Println("ReadFile: ", err.Error())
+		return nil, err
+	}
+
+	if err := json.Unmarshal(bytes, &xxx); err != nil {
+		fmt.Println("Unmarshal: ", err.Error())
+		return nil, err
+	}
+
+	return xxx, nil
+}
 
 func Startup(config *RedisConfig, pool *PoolConfig) error {
 	log.Println("Redis : Startup : Started")

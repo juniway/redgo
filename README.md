@@ -6,7 +6,7 @@ a wrapper for redigo
 1. Write a main.go, build and run
 2. curl http://localhost:6667
 
-``` go
+``` c++  
 func main() {
 
 	var config = &redisman.RedisConfig{"localhost", "6379", "", 0, 60}
